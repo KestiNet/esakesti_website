@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Website</title>
+    <link rel="stylesheet" href="static/css/styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <ul class="menu">
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('professional_timeline') }}">Professional Timeline</a></li>
+            <li><a href="#">Apps</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="container">
+            <h1>Welcome to Your Website</h1>
+            <p>Your tagline or mission statement goes here.</p>
+            <a href="#" class="cta">Learn More</a>
+        </div>
+    </header>
+
+    <!-- Content Section -->
+    <section class="content">
+        <div class="container">
+            <h2>About Us</h2>
+            <p>This is a brief introduction about your website or business. You can include information about your services, products, or anything you want to showcase.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Your Website. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</body>
+</html>

@@ -7,7 +7,11 @@
     <link rel="stylesheet" href="static/css/styles.css">
 </head>
 <body>
+
+    <!-- Banner Image -->
     <div id="bannerimage"></div>
+
+    <!-- Navigation Bar -->
     <nav>
         <ul class="menu">
             <li><a href="{{ url_for('home') }}">Home</a></li>
@@ -16,32 +20,31 @@
             <li><a href="#">Contact</a></li>
         </ul>
     </nav>
-    <style>
-        .profile-image {
-            float: left;
-            margin-right: 20px; 
-            max-width: 460px; /* Set max-width to control the size */
-            height: auto; /* Maintain aspect ratio */
-            border-radius: 10px; /* Optional: Add some styling */
-        }
-    </style>
-   <!-- Hero Section -->
-<header class="hero">
-    <div class="container">
-        <p>
-            <img src="{{ url_for('static', filename='optimized_image.jpeg') }}" alt="Esa Kesti" class="profile-image">
-            Hi there! I’m Esa Kesti, a dedicated Tier 3 Enterprise Customer Support Engineer at Apple. With over eight years of hands-on experience in providing cutting-edge technical support and crafting bespoke solutions for enterprise environments, I specialize in Python development, CoreOS, and comprehensive network engineering. As a Master’s degree holder in Information Technology and a certified expert in Python, AI, and networking, I excel in mentoring teams, working in innovative projects, and solving complex challenges in diverse, multicultural settings.
-        </p>
-    </div>
-</header>
 
-<!-- Content Section -->
-<section class="content">
-    <div class="container">
-        <h3>About Me</h3>
-        <p>Throughout my career, I've honed my skills in delivering exceptional technical solutions and fostering team growth. I'm passionate about technology and thrive in diverse, multilingual environments, always striving to push the boundaries of innovation and excellence.</p>
-    </div>
-</section>
+    <!-- Hero Section with Profile -->
+    <header class="hero">
+        <div class="container">
+            <img src="{{ url_for('static', filename='optimized_image.jpeg') }}" alt="Esa Kesti" class="profile-image">
+            <h1>Hi there!</h1>
+            <p>I'm Esa, a dedicated Tier 3 Enterprise Customer Support Engineer at Apple. With over eight years of hands-on experience, I specialize in providing cutting-edge technical support for enterprise and education customers.</p>
+        </div>
+    </header>
+
+    <!-- About Me Section -->
+    <section class="content">
+        <div class="container">
+            <h3>About Me</h3>
+            <p>Throughout my career, I’ve been passionate about driving innovation through technical excellence. I focus on delivering robust, high-impact technical support to enterprise customers while fostering a collaborative environment that enables team growth. Whether it's mentoring teams, working on innovative projects, or navigating complex enterprise architectures, I thrive in environments that push boundaries and continuously evolve.
+
+                When I'm not working, I enjoy spending quality time with my family. My partner and I love exploring new places with our children, creating memories while traveling and experiencing the world. Balancing family life with a demanding career is important to me, and I strive to make time for both my personal and professional growth.
+                
+                I’m also a tech enthusiast, passionate about exploring new tools and trends, and I dedicate time to mentoring aspiring IT professionals. I believe in sharing my knowledge to help others grow in their careers.
+                
+                My mission is to bridge the gap between technology and its end-users, making advanced tools more accessible, efficient, and tailored to unique business needs. By aligning technical strategy with organizational goals, I ensure that enterprises can leverage technology to its fullest potential.
+                
+                </p>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer>

@@ -10,5 +10,9 @@ def home():
 def professional_timeline():
     return render_template('professional_timeline.html')  # This will look for 'professional_timeline.html' in the 'templates' folder
 
+@app.route('/contact_me')
+def contact_me():
+    return render_template('contact_me.html')
+
 if __name__ == "__main__":
     app.run(debug=True)

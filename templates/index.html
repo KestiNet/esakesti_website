@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Website</title>
-    <link rel="stylesheet" href="static/css/styles.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
 </head>
 <body>
 
@@ -16,15 +17,16 @@
         <ul class="menu">
             <li><a href="{{ url_for('home') }}">Home</a></li>
             <li><a href="{{ url_for('professional_timeline') }}">Professional Timeline</a></li>
-            <li><a href="#">Apps</a></li>
-            <li><a href="#">Contact</a></li>
+            <!-- Fix or define the 'tools' route below -->
+            <li><a href="{{ url_for('tools') }}">Tools</a></li>
+            <li><a href="{{ url_for('contact_me') }}">Contact</a></li>
         </ul>
     </nav>
 
     <!-- Hero Section with Profile -->
     <header class="hero">
         <div class="container">
-            <img src="{{ url_for('static', filename='optimized_image.jpeg') }}" alt="Esa Kesti" class="profile-image">
+            <img src="{{ url_for('static', filename='optimized_image.jpeg') }}" alt="Profile image of Esa Kesti" class="profile-image">
             <h1>Hi there!</h1>
             <p>I'm Esa, a dedicated Tier 3 Enterprise Customer Support Engineer at Apple. With over eight years of hands-on experience, I specialize in providing cutting-edge technical support for enterprise and education customers.</p>
         </div>
@@ -34,15 +36,10 @@
     <section class="content">
         <div class="container">
             <h3>About Me</h3>
-            <p>Throughout my career, I’ve been passionate about driving innovation through technical excellence. I focus on delivering robust, high-impact technical support to enterprise customers while fostering a collaborative environment that enables team growth. Whether it's mentoring teams, working on innovative projects, or navigating complex enterprise architectures, I thrive in environments that push boundaries and continuously evolve.
-
-                When I'm not working, I enjoy spending quality time with my family. My partner and I love exploring new places with our children, creating memories while traveling and experiencing the world. Balancing family life with a demanding career is important to me, and I strive to make time for both my personal and professional growth.
-                
-                I’m also a tech enthusiast, passionate about exploring new tools and trends, and I dedicate time to mentoring aspiring IT professionals. I believe in sharing my knowledge to help others grow in their careers.
-                
-                My mission is to bridge the gap between technology and its end-users, making advanced tools more accessible, efficient, and tailored to unique business needs. By aligning technical strategy with organizational goals, I ensure that enterprises can leverage technology to its fullest potential.
-                
-                </p>
+            <p>Throughout my career, I’ve been passionate about driving innovation through technical excellence. I focus on delivering robust, high-impact technical support to enterprise customers while fostering a collaborative environment that enables team growth. Whether it's mentoring teams, working on innovative projects, or navigating complex enterprise architectures, I thrive in environments that push boundaries and continuously evolve.</p>
+            <p>When I'm not working, I enjoy spending quality time with my family. My partner and I love exploring new places with our children, creating memories while traveling and experiencing the world. Balancing family life with a demanding career is important to me, and I strive to make time for both my personal and professional growth.</p>
+            <p>I’m also a tech enthusiast, passionate about exploring new tools and trends, and I dedicate time to mentoring aspiring IT professionals. I believe in sharing my knowledge to help others grow in their careers.</p>
+            <p>My mission is to bridge the gap between technology and its end-users, making advanced tools more accessible, efficient, and tailored to unique business needs. By aligning technical strategy with organizational goals, I ensure that enterprises can leverage technology to its fullest potential.</p>
         </div>
     </section>
 

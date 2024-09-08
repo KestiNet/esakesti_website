@@ -1,0 +1,28 @@
+<!-- 
+    This is a working contact form. To receive email, 
+    Replace YOUR_ACCESS_KEY_HERE with your actual Access Key.
+
+    Create Access Key here 👉 https://web3forms.com/
+ -->
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Your Website</title>
+     <link rel="stylesheet" href="static/css/styles.css">
+ </head>
+ <body>
+ 
+     <!-- Banner Image -->
+     <div id="bannerimage"></div>
+ 
+     <!-- Navigation Bar -->
+     <nav>
+         <ul class="menu">
+             <li><a href="{{ url_for('home') }}">Home</a></li>
+             <li><a href="{{ url_for('professional_timeline') }}">Professional Timeline</a></li>
+             <li><a href="{{ url_for('apps') }}">Apps</a></li>
+             <li><a href="{{ url_for('contact_me') }}">Contact</a></li>
+         </ul>
+     </nav>

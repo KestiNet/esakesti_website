@@ -103,8 +103,6 @@ nav {
   margin: 0 auto;
   background-color: #1e293b;
   margin-bottom: 40px; /* Add space between content and footer */
-
- 
   border-radius: 10px;
   font-size: 1.25rem; /* Increase this value to make the font larger */
   line-height: 1.8; /* Adjust line height for better readability */
@@ -266,7 +264,6 @@ footer p {
   }
 }
 
-
 .contact-section {
   width: 100%;
   max-width: 40rem;
@@ -338,4 +335,19 @@ footer p {
   color: #fff;
   padding: 13px 5px;
   border-radius: 0.375rem;
+}
+
+/* ===== New CSS Added ===== */
+
+/* Empty Section Styling */
+.empty-section {
+  margin: 30px 0; /* Adds space above and below the section */
+  text-align: center; /* Centers content inside the section */
+}
+
+/* Resized Image */
+.resized-image {
+  width: 70%; /* Scales the image to 70% of its original size */
+  max-width: 500px; /* Optional maximum width */
+  height: auto; /* Maintains aspect ratio */
 }

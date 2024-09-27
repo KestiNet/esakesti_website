@@ -5,30 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Esa Kesti</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <style>
+        /* Apply margins specifically to the main content area */
+        .main-content {
+            margin-right: 150px;
+            margin-left: 150px;
+        }
+    </style>
 </head>
 <body>
+
+    <!-- Banner Image -->
     <div id="bannerimage"></div>
 
+   <!-- Navigation Bar -->
+   <nav>
     <ul class="menu">
         <li><a href="{{ url_for('home') }}">Home</a></li>
         <li><a href="{{ url_for('professional_timeline') }}">Professional Timeline</a></li>
-        <li class="dropdown">
+        li class="dropdown">
             <a href="javascript:void(0)" class="dropbtn">Tools</a>
-            <div class="dropdown-content">
-                <a href="{{ url_for('gonogo') }}">GoNoGo</a>
-            </div>
-        </li>
+            <div class="dropdown-content"></div>
+            <a href="{{ url_for('gonogo') }}">GoNoGo</a>
         <li><a href="{{ url_for('contact_me') }}">Contact</a></li>
     </ul>
+</nav>
 
-    <section class="empty-section">
-        <div style="text-align: center;">
-            <img src="{{ url_for('static', filename='coming_soon_with_snail.png') }}" alt="A beautiful landscape" class="resized-image">
-        </div>
-    </section>
 
-    <footer>
-        <p>&copy; 2024 Esa Kesti. All rights reserved.</p>
-    </footer>
-</body>
-</html>
+
+

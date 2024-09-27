@@ -19,6 +19,10 @@ def contact_me():
 def tools():
     return render_template('tools.html')
 
+@app.route('/gonogo')
+def gonogo():
+    return render_template('gonogo.html')
+
 
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 8080))  # Use PORT environment variable or default to 8080

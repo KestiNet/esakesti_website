@@ -23,7 +23,12 @@ def tools():
 def gonogo():
     return render_template('gonogo.html')
 
+@app.errorhandler(403)
+def forbidden_error(error):
+  app.logger.error('403 error occurred: %s', error)
+  return "403 Forbidden", 403
+
 
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 8080))  # Use PORT environment variable or default to 8080
-    app.run(host='0.0.0.0', port=port)
+    app.run(debug=True,host='0.0.0.0', port=5000)

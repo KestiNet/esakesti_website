@@ -416,7 +416,9 @@ footer p {
   width: 340px; /* Increased to account for padding */
 }
 
-.centered-form input[type="text"] {
+.centered-form input[type="text"], 
+.centered-form input[type="number"],
+.centered-form input[type="time"] {
   width: 100%;
   padding: 10px;
   margin-bottom: 10px;

@@ -393,3 +393,46 @@ footer p {
 .dropdown:hover .dropdown-content {
   display: block;
 }
+
+/* Add this at the end of your existing CSS file */
+
+.centered-form {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Align the form closer to the top */
+  min-height: 100vh;
+  margin-top: 0; /* Remove any unwanted spacing */
+  padding-top: 10px; /* Reduce padding if needed */
+}
+
+.centered-form form {
+  background-color: #1e293b;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.centered-form input[type="text"] {
+  width: 300px;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #38bdf8;
+  background-color: #0f172a;
+  color: white;
+  border-radius: 4px;
+}
+
+.centered-form input[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  background-color: #38bdf8;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.centered-form input[type="submit"]:hover {
+  background-color: #0ea5e9;
+}

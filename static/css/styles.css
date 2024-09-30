@@ -399,10 +399,10 @@ footer p {
 .centered-form {
   display: flex;
   justify-content: center;
-  align-items: flex-start; /* Align the form closer to the top */
+  align-items: flex-start;
   min-height: 100vh;
-  margin-top: 0; /* Remove any unwanted spacing */
-  padding-top: 10px; /* Reduce padding if needed */
+  margin-top: 5px;
+  padding-top: 10px;
 }
 
 .centered-form form {
@@ -410,16 +410,21 @@ footer p {
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 340px; /* Increased to account for padding */
 }
 
 .centered-form input[type="text"] {
-  width: 300px;
+  width: 100%;
   padding: 10px;
   margin-bottom: 10px;
   border: 1px solid #38bdf8;
   background-color: #0f172a;
   color: white;
   border-radius: 4px;
+  box-sizing: border-box; /* Ensures padding doesn't affect overall width */
 }
 
 .centered-form input[type="submit"] {
@@ -431,6 +436,7 @@ footer p {
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  margin-top: 10px; /* Add some space above the submit button */
 }
 
 .centered-form input[type="submit"]:hover {

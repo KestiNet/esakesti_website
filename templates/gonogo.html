@@ -9,66 +9,65 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-
-    <!-- Banner Image -->
     <div id="bannerimage"></div>
 
-   <!-- Navigation Bar -->
-   <nav>
-    <ul class="menu">
-        <li><a href="{{ url_for('home') }}">Home</a></li>
-        <li><a href="{{ url_for('professional_timeline') }}">Professional Timeline</a></li>
-        <li class="dropdown">
-            <a href="javascript:void(0)" class="dropbtn">Tools</a>
-            <div class="dropdown-content">
-                <a href="{{ url_for('gonogo') }}">GoNoGo</a>
-            </div>
-        </li>
-        <li><a href="{{ url_for('contact_me') }}">Contact</a></li>
-    </ul>
-</nav>
+    <nav>
+        <ul class="menu">
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('professional_timeline') }}">Professional Timeline</a></li>
+            <li class="dropdown">
+                <a href="javascript:void(0)" class="dropbtn">Tools</a>
+                <div class="dropdown-content">
+                    <a href="{{ url_for('gonogo') }}">GoNoGo</a>
+                </div>
+            </li>
+            <li><a href="{{ url_for('contact_me') }}">Contact</a></li>
+        </ul>
+    </nav>
 
-<h1>GoNoGo Calculator</h1>
+    <h1>GoNoGo Calculator</h1>
 
-<!-- Form Section -->
-<div class="centered-form">
-    <form id="gonogoForm">
-        {% for day in weekdays %}
-        <label for="{{ day }}">{{ day }}:</label>
-        <input type="number" step="0.5" id="{{ day }}" name="{{ day }}" required><br>
-        {% endfor %}
-        <label for="friday_start">Friday start time (HH:MM):</label>
-        <input type="time" id="friday_start" name="friday_start" required><br>
-        <button type="submit">Calculate GoNoGo</button>
-    </form>
-</div>
+    <div class="centered-form">
+        <form id="gonogoForm">
+            {% for day in weekdays %}
+            <label for="{{ day }}">{{ day }}:</label>
+            <input type="number" step="0.01" id="{{ day }}" name="{{ day }}" required><br>
+            {% endfor %}
+            <label for="friday_start">Friday start time (HH:MM):</label>
+            <input type="time" id="friday_start" name="friday_start" required><br>
+            <button type="submit">Calculate GoNoGo</button>
+        </form>
+    </div>
 
-<div id="result"></div>
+    <div id="result"></div>
 
-<script>
-    $(document).ready(function() {
-        $('#gonogoForm').submit(function(e) {
-            e.preventDefault();
-            $.ajax({
-                url: '/gonogo',
-                type: 'POST',
-                data: $(this).serialize(),
-                success: function(response) {
-                    if (response.error) {
-                        $('#result').text(response.error);
-                    } else {
-                        $('#result').html(response.message.replace(/\n/g, '<br>'));
+    <script>
+        $(document).ready(function() {
+            $('#gonogoForm').submit(function(e) {
+                e.preventDefault();
+                $.ajax({
+                    url: '/gonogo',
+                    type: 'POST',
+                    data: $(this).serialize(),
+                    success: function(response) {
+                        if (response.error) {
+                            $('#result').text(response.error);
+                        } else {
+                            $('#result').html(response.message.replace(/\n/g, '<br>'));
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.log("Error: " + error);
+                        console.log("Response Text: " + xhr.responseText);
+                        $('#result').text("An error occurred: " + error + ". Status: " + status);
                     }
-                }
+                });
             });
         });
-    });
-</script>
+    </script>
 
- <!-- Footer -->
- <footer>
-    <p>&copy; 2024 Esa Kesti. All rights reserved.</p>
-</footer>
-
+    <footer>
+        <p>&copy; 2024 Esa Kesti. All rights reserved.</p>
+    </footer>
 </body>
 </html>

@@ -1,36 +1,28 @@
-$(document).ready(function() {
-    // GoNoGo form submission
-    $('#gonogoForm').submit(function(e) {
+<><script src="https://code.jquery.com/jquery-3.6.0.min.js"></script><script>
+    $(document).ready(function() {$('#gonogoForm').submit(function (e) {
         e.preventDefault();
         $.ajax({
             url: '/gonogo',
             type: 'POST',
             data: $(this).serialize(),
-            success: function(response) {
-                console.log("Server response:", response); // Add this line for debugging
+            dataType: 'json',
+            success: function (response) {
+                console.log("Response received:", response);
                 if (response.error) {
-                    $('#result').text(response.error);
-                } else {
+                    $('#result').text("Error: " + response.error);
+                } else if (response.message) {
                     $('#result').html(response.message.replace(/\n/g, '<br>'));
+                } else {
+                    $('#result').text("Calculation complete, but no message received.");
                 }
+                $('#result').show(); // Ensure the result div is visible
             },
-            error: function(xhr, status, error) {
-                console.log("Error: " + error);
-                console.log("Response Text: " + xhr.responseText);
-                $('#result').text("An error occurred: " + error + ". Status: " + status);
+            error: function (xhr, status, error) {
+                console.log("Error details:", { xhr: xhr, status: status, error: error });
+                $('#result').text("An error occurred. Please try again.");
+                $('#result').show();
             }
         });
+    })};
     });
-
-    // CTA button click event
-    $('.cta').on('click', function(e) {
-        e.preventDefault();
-        alert('More information coming soon!');
-    });
-
-    // Dropdown button click event
-    $('.dropbtn').on('click', function(e) {
-        e.preventDefault();
-        $(this).next('.dropdown-content').toggle();
-    });
-});
+</script></>

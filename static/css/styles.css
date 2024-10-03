@@ -416,9 +416,7 @@ footer p {
   width: 340px; /* Increased to account for padding */
 }
 
-.centered-form input[type="text"], 
-.centered-form input[type="number"],
-.centered-form input[type="time"] {
+.centered-form input[type="text"] {
   width: 100%;
   padding: 10px;
   margin-bottom: 10px;
@@ -443,4 +441,23 @@ footer p {
 
 .centered-form input[type="submit"]:hover {
   background-color: #0ea5e9;
+}
+
+#result {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #1e293b;
+  color: white;
+  border-radius: 4px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.updated {
+  animation: flash 1s;
+}
+
+@keyframes flash {
+  0% { background-color: yellow; }
+  100% { background-color: transparent; }
 }

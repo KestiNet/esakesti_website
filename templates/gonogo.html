@@ -40,31 +40,43 @@
     </div>
 
     <div id="result"></div>
-
     <script>
         $(document).ready(function() {
             $('#gonogoForm').submit(function(e) {
                 e.preventDefault();
+                console.log("Form submitted");
+                
+                var formData = $(this).serialize();
+                console.log("Form data:", formData);
+        
                 $.ajax({
                     url: '/gonogo',
                     type: 'POST',
-                    data: $(this).serialize(),
+                    data: formData,
+                    dataType: 'json',
                     success: function(response) {
+                        console.log("Response received:", response);
                         if (response.error) {
-                            $('#result').text(response.error);
-                        } else {
+                            console.error("Error in response:", response.error);
+                            $('#result').text("Error: " + response.error);
+                        } else if (response.message) {
+                            console.log("Message received:", response.message);
                             $('#result').html(response.message.replace(/\n/g, '<br>'));
+                        } else {
+                            console.warn("Unexpected response format:", response);
+                            $('#result').text("Unexpected response format. Check console for details.");
                         }
+                        $('#result').show().addClass('updated');
                     },
                     error: function(xhr, status, error) {
-                        console.log("Error: " + error);
-                        console.log("Response Text: " + xhr.responseText);
-                        $('#result').text("An error occurred: " + error + ". Status: " + status);
+                        console.error("AJAX error:", {xhr: xhr, status: status, error: error});
+                        $('#result').text("An error occurred while processing your request. Please try again.");
+                        $('#result').show();
                     }
                 });
             });
         });
-    </script>
+        </script>
 
     <footer>
         <p>&copy; 2024 Esa Kesti. All rights reserved.</p>

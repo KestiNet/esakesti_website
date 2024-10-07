@@ -461,3 +461,8 @@ footer p {
   0% { background-color: yellow; }
   100% { background-color: transparent; }
 }
+
+/* Center the heading */
+.center-title {
+    text-align: center;
+}

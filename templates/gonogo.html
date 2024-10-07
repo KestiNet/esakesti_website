@@ -35,47 +35,52 @@
             {% endfor %}
             <label for="friday_start">Friday start time (HH:MM):</label>
             <input type="time" id="friday_start" name="friday_start" required><br>
+            <label for="go_home_time">Go Home Time:</label>
+            <input type="text" id="go_home_time" name="go_home_time" readonly><br>
+
             <button type="submit">Calculate GoNoGo</button>
         </form>
     </div>
 
-    <div id="result"></div>
+<div id="result" style="display:none;"></div>
+    
     <script>
-        $(document).ready(function() {
-            $('#gonogoForm').submit(function(e) {
-                e.preventDefault();
-                console.log("Form submitted");
-                
-                var formData = $(this).serialize();
-                console.log("Form data:", formData);
+$('#gonogoForm').submit(function(e) {
+    e.preventDefault();
+    console.log("Form submitted");
+
+    var formData = $(this).serialize();
+    console.log("Serialized form data:", formData);
+
+    $.ajax({
+        url: '/gonogo',
+        type: 'POST',
+        data: formData,
+        dataType: 'json',
+        success: function(response) {
+            console.log("AJAX success response:", response);
+
+            if (response.error) {
+                console.error("Error in response:", response.error);
+                $('#go_home_time').val("Error: " + response.error);
+            } else if (response.message) {
+                console.log("Received message:", response.message);
+
+                // Extract the Go Home Time from the response and update the input field
+                let goHomeTime = response.message.match(/GoHome: (\d{2}:\d{2})/)[1];
+                $('#go_home_time').val(goHomeTime);
+            } else {
+                console.warn("Unexpected response format:", response);
+                $('#go_home_time').val("Unexpected format. Check console for details.");
+            }
+        },
+        error: function(xhr, status, error) {
+            console.error("AJAX error:", {xhr: xhr, status: status, error: error});
+            $('#go_home_time').val("An error occurred while processing your request.");
+        }
+    });
+});
         
-                $.ajax({
-                    url: '/gonogo',
-                    type: 'POST',
-                    data: formData,
-                    dataType: 'json',
-                    success: function(response) {
-                        console.log("Response received:", response);
-                        if (response.error) {
-                            console.error("Error in response:", response.error);
-                            $('#result').text("Error: " + response.error);
-                        } else if (response.message) {
-                            console.log("Message received:", response.message);
-                            $('#result').html(response.message.replace(/\n/g, '<br>'));
-                        } else {
-                            console.warn("Unexpected response format:", response);
-                            $('#result').text("Unexpected response format. Check console for details.");
-                        }
-                        $('#result').show().addClass('updated');
-                    },
-                    error: function(xhr, status, error) {
-                        console.error("AJAX error:", {xhr: xhr, status: status, error: error});
-                        $('#result').text("An error occurred while processing your request. Please try again.");
-                        $('#result').show();
-                    }
-                });
-            });
-        });
         </script>
 
     <footer>

@@ -67,7 +67,8 @@ def gonogo():
           app.logger.info(f"Sum of entries: {sum_of_entries}")
           app.logger.info(f"Remaining hours: {remaining_hours}")
           app.logger.info(f"Go home time: {go_home_time}")
-
+          app.logger.info(f"Message being sent to frontend: {message}")
+          
           # Return the final message
           return jsonify({"message": message})
 

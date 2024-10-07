@@ -38,9 +38,11 @@ a:hover {
 
 /* Navigation Styles */
 nav {
-  background-color: #333;
+  background-color: #1e293b;
   overflow: hidden;
 }
+
+
 
 .menu {
   list-style: none;
@@ -350,4 +352,112 @@ footer p {
   width: 70%; /* Scales the image to 70% of its original size */
   max-width: 500px; /* Optional maximum width */
   height: auto; /* Maintains aspect ratio */
+}
+
+/* styles.css */
+
+/* Basic styling for the navigation */
+/*
+.menu {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  background-color: #f1f1f1;
+  overflow: hidden;
+}
+*/
+.menu li {
+  float: left;
+}
+
+.menu li a, .dropbtn {
+  display: inline-block;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.menu li a:hover, .dropdown:hover .dropbtn {
+  background-color: #ddd;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #1e293b;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Add this at the end of your existing CSS file */
+
+.centered-form {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  margin-top: 5px;
+  padding-top: 10px;
+}
+
+.centered-form form {
+  background-color: #1e293b;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 340px; /* Increased to account for padding */
+}
+
+.centered-form input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #38bdf8;
+  background-color: #0f172a;
+  color: white;
+  border-radius: 4px;
+  box-sizing: border-box; /* Ensures padding doesn't affect overall width */
+}
+
+.centered-form input[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  background-color: #38bdf8;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px; /* Add some space above the submit button */
+}
+
+.centered-form input[type="submit"]:hover {
+  background-color: #0ea5e9;
+}
+
+#result {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #1e293b;
+  color: white;
+  border-radius: 4px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.updated {
+  animation: flash 1s;
+}
+
+@keyframes flash {
+  0% { background-color: yellow; }
+  100% { background-color: transparent; }
 }

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esa Kesti</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/form_styles.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div id="bannerimage"></div>
+
+    <nav>
+        <ul class="menu">
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('professional_timeline') }}">Professional Timeline</a></li>
+            <li class="dropdown">
+                <a href="javascript:void(0)" class="dropbtn">Tools</a>
+                <div class="dropdown-content">
+                    <a href="{{ url_for('gonogo') }}">GoNoGo</a>
+                </div>
+            </li>
+            <li><a href="{{ url_for('contact_me') }}">Contact</a></li>
+        </ul>
+    </nav>
+
+    <h1>GoNoGo Calculator</h1>
+
+    <div class="centered-form">
+        <form id="gonogoForm">
+            {% for day in weekdays %}
+            <label for="{{ day }}">{{ day }}:</label>
+            <input type="number" step="0.01" id="{{ day }}" name="{{ day }}" required><br>
+            {% endfor %}
+            <label for="friday_start">Friday start time (HH:MM):</label>
+            <input type="time" id="friday_start" name="friday_start" required><br>
+            <label for="go_home_time">Go Home Time:</label>
+            <input type="text" id="go_home_time" name="go_home_time" readonly><br>
+
+            <button type="submit">Calculate GoNoGo</button>
+        </form>
+    </div>
+
+<div id="result" style="display:none;"></div>
+    
+    <script>
+$('#gonogoForm').submit(function(e) {
+    e.preventDefault();
+    console.log("Form submitted");
+
+    var formData = $(this).serialize();
+    console.log("Serialized form data:", formData);
+
+    $.ajax({
+        url: '/gonogo',
+        type: 'POST',
+        data: formData,
+        dataType: 'json',
+        success: function(response) {
+            console.log("AJAX success response:", response);
+
+            if (response.error) {
+                console.error("Error in response:", response.error);
+                $('#go_home_time').val("Error: " + response.error);
+            } else if (response.message) {
+                console.log("Received message:", response.message);
+
+                // Extract the Go Home Time from the response and update the input field
+                let goHomeTime = response.message.match(/GoHome: (\d{2}:\d{2})/)[1];
+                $('#go_home_time').val(goHomeTime);
+            } else {
+                console.warn("Unexpected response format:", response);
+                $('#go_home_time').val("Unexpected format. Check console for details.");
+            }
+        },
+        error: function(xhr, status, error) {
+            console.error("AJAX error:", {xhr: xhr, status: status, error: error});
+            $('#go_home_time').val("An error occurred while processing your request.");
+        }
+    });
+});
+        
+        </script>
+
+    <footer>
+        <p>&copy; 2024 Esa Kesti. All rights reserved.</p>
+    </footer>
+</body>
+</html>

@@ -17,8 +17,12 @@
         <ul class="menu">
             <li><a href="{{ url_for('home') }}">Home</a></li>
             <li><a href="{{ url_for('professional_timeline') }}">Professional Timeline</a></li>
-            <!-- Fix or define the 'tools' route below -->
-            <li><a href="{{ url_for('tools') }}">Tools</a></li>
+            <li class="dropdown">
+                <a href="javascript:void(0)" class="dropbtn">Tools</a>
+                <div class="dropdown-content">
+                    <a href="{{ url_for('gonogo') }}">GoNoGo</a>
+                </div>
+            </li>
             <li><a href="{{ url_for('contact_me') }}">Contact</a></li>
         </ul>
     </nav>
